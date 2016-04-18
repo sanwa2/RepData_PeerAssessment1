@@ -92,13 +92,13 @@ Show any code that is needed to
 
 ##steps <- data %>% 
 
-  filter(!is.na(steps)) %>%; 
+  filter(!is.na(steps)) %>% 
   
-  ##group_by(date) %>%; 
+  group_by(date) %>% 
   
-  ##summarize(steps = sum(steps)) %>%;
+  summarize(steps = sum(steps)) %>%
   
-  ##print' 
+  print' 
 
 For this part of the assignment, you can ignore the missing values in
 the dataset.
