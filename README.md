@@ -79,6 +79,7 @@ assignment so you do not have to download the data separately.
 Show any code that is needed to
 
 1. Load the data (i.e. `read.csv()`)
+data <- read.csv("activity.csv", header = TRUE, sep = ',')
 
 2. Process/transform the data (if necessary) into a format suitable for your analysis
 
@@ -89,6 +90,10 @@ For this part of the assignment, you can ignore the missing values in
 the dataset.
 
 1. Make a histogram of the total number of steps taken each day
+steps_per_day <- aggregate(steps ~ date, data, sum)
+hist(steps_per_day$steps, main= paste("Total Steps Each Day"), col = "firebrick", xlab="Number of Steps")
+
+
 
 2. Calculate and report the **mean** and **median** total number of steps taken per day
 
