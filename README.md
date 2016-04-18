@@ -136,7 +136,7 @@ interval <- data %>%
 
 ggplot(interval, aes(x=interval, y=steps)) +   geom_line(color = "firebrick")
 
-![plot of Rplot0](./Rplot0.png)
+![plot of Rplot02](./Rplot02.png)
   
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
