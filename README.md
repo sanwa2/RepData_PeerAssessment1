@@ -109,7 +109,7 @@ rmean <- mean(steps_by_day$steps)
 rmedian <- median(steps_by_day$steps)
 ```
 
-  ![plot of hist per day](./data/hist per day.png)
+  ![plot of hist per day](./doc/hist per day.png)
   
 ### What is the average daily activity pattern?
 
@@ -125,7 +125,7 @@ plot(steps_by_interval$interval,steps_by_interval$steps, type="l", xlab="Interva
 max_interval <- steps_by_interval[which.max(steps_by_interval$steps),1]
 ```
 
-![plot of Rplot02](./data/Rplot02.png)
+![plot of Rplot02](./doc/Rplot02.png)
 
 The 5-minute interval, on average across all the days in the data set, containing the maximum number of steps is 835.
 
@@ -168,7 +168,7 @@ med_diff <- rmedian.i - rmedian
 
 total_diff <- sum(steps_by_day_i$steps) - sum(steps_by_day$steps)
 ```
-  ![plot of Missing values](./data/Missing values.png)
+  ![plot of Missing values](./doc/Missing values.png)
 
 mean_steps_full <- mean(steps_full$steps, na.rm = TRUE)
 
@@ -203,7 +203,7 @@ xyplot(steps_by_interval_i$steps ~ steps_by_interval_i$interval|steps_by_interva
 
 ```
 
-![plot of two weeks](./data/Two weeks.png) 
+![plot of two weeks](./doc/Two weeks.png) 
 
 
 **Your plot will look different from the one above** because you will
