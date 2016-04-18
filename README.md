@@ -218,7 +218,7 @@ s <- ggplot(interval_full, aes(x=interval, y=steps, color = weektype)) +
   facet_wrap(~weektype, ncol = 1, nrow=2)
 print(s)
 
-![Sample panel plot](instructions_fig/sample_panelplot.png) 
+![plot of two weeks](./Two weeks.png) 
 
 
 **Your plot will look different from the one above** because you will
