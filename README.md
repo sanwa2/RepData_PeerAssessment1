@@ -136,7 +136,7 @@ ggplot(interval, aes(x=interval, y=steps)) +   geom_line(color = "firebrick")
   
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
-##interval[which.max(interval$steps),]
+interval[which.max(interval$steps),]
 
 The 5-minute interval, on average across all the days in the data set, containing the maximum number of steps is 835.
 
@@ -148,42 +148,47 @@ bias into some calculations or summaries of the data.
 
 1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with `NA`s)
 
-##sum(is.na(data$steps))
+sum(is.na(data$steps))
 
-##Missing values are 2304
+Missing values are 2304
 
 2. Take the approach to fill in a missing NA with the average number of steps in the same 5-min interval
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
-##data_full <- data
-##nas <- is.na(data_full$steps)
-##avg_interval <- tapply(data_full$steps, data_full$interval, mean, na.rm=TRUE, simplify=TRUE)
-##data_full$steps[nas] <- avg_interval[as.character(data_full$interval[nas])]
+data_full <- data
+
+nas <- is.na(data_full$steps)
+
+avg_interval <- tapply(data_full$steps, data_full$interval, mean, na.rm=TRUE, simplify=TRUE)
+
+data_full$steps[nas] <- avg_interval[as.character(data_full$interval[nas])]
 
 sum(is.na(data_full$steps))
-## [1] 0
 
+ 
 4. Make a histogram of the total number of steps taken each day and Calculate and report the **mean** and **median** total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 Recount total steps by day and create Histogram.
 
-steps_by_day_i <- aggregate(steps ~ date, imputed_data, sum)
-hist(steps_by_day_i$steps, main = paste("Total Steps Each Day"), col="blue", xlab="Number of Steps")
-
 #Create Histogram to show difference. 
 
-##steps_full <- data_full %>%
-  ##filter(!is.na(steps)) %>%
-  ##group_by(date) %>%
-  ##summarize(steps = sum(steps)) %>%
-  ##print
-  
-##ggplot(steps_full, aes(x = steps)) +
-  ##geom_histogram(fill = "firebrick", binwidth = 1000) +
-  ##labs(title = "Histogram of Steps per day, including missing values", x = "Steps per day", y = "Frequency")
+steps_full <- data_full %>%
 
-#mean_steps_full <- mean(steps_full$steps, na.rm = TRUE)
-#median_steps_full <- median(steps_full$steps, na.rm = TRUE)
+ filter(!is.na(steps)) %>%
+ 
+  group_by(date) %>%
+  
+  summarize(steps = sum(steps)) %>%
+  
+  print
+  
+ggplot(steps_full, aes(x = steps)) +
+  geom_histogram(fill = "firebrick", binwidth = 1000) +
+  labs(title = "Histogram of Steps per day, including missing values", x = "Steps per day", y = "Frequency")
+
+mean_steps_full <- mean(steps_full$steps, na.rm = TRUE)
+
+median_steps_full <- median(steps_full$steps, na.rm = TRUE)
 
 The imputed data mean is 1.059 × 104. 
 The imputed data median is 1.0766 × 104. 
@@ -198,8 +203,9 @@ the dataset with the filled-in missing values for this part.
 
 1. Create a new factor variable in the dataset with two levels -- "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
-##data_full <- mutate(data_full, weektype = ifelse(weekdays(data_full$date) == "Saturday" | weekdays(data_full$date) == "Sunday", "weekend", "weekday"))
-##data_full$weektype <- as.factor(data_full$weektype)
+data_full <- mutate(data_full, weektype = ifelse(weekdays(data_full$date) == "Saturday" | weekdays(data_full$date) == "Sunday", "weekend", "weekday"))
+
+data_full$weektype <- as.factor(data_full$weektype)
 
 
 2. Make a panel plot containing a time series plot (i.e. `type = "l"`) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was created using **simulated data**:
