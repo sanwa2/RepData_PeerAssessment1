@@ -81,7 +81,7 @@ Show any code that is needed to
 1. Load the data (i.e. `read.csv()`)
 
 
-##data <- read.csv("activity.csv", header = TRUE, sep = ',')
+data <- read.csv("activity.csv", header = TRUE, sep = ',')
 
 2. Process/transform the data (if necessary) into a format suitable for your analysis
 
@@ -90,7 +90,7 @@ Show any code that is needed to
 
 1.Calculate the total number of steps taken per day
 
-##steps <- data %>% 
+steps <- data %>% 
 
   filter(!is.na(steps)) %>% 
   
@@ -106,30 +106,33 @@ the dataset.
 2. Make a histogram of the total number of steps taken each day
 
 
-##ggplot(steps, aes(x = steps)) +
+ggplot(steps, aes(x = steps)) +
   geom_histogram(fill = "firebrick", binwidth = 1000) +
   labs(title = "Histogram of Steps per day", x = "Steps per day", y = "Frequency")
 
 
 3. Calculate and report the **mean** and **median** total number of steps taken per day
 
-##mean <- mean(steps_per_day$steps); 
-##median <- median(steps_per_day$steps)
+mean <- mean(steps_per_day$steps)
 
-##The mean amount of steps is 10766 and the median amount of steps is 10765.
+median <- median(steps_per_day$steps)
+
+The mean amount of steps is 10766 and the median amount of steps is 10765.
 
 
 ### What is the average daily activity pattern?
 
 1. Make a time series plot (i.e. `type = "l"`) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
-##interval <- data %>%
+interval <- data %>%
+
   filter(!is.na(steps)) %>%
+  
   group_by(interval) %>%
+  
   summarize(steps = mean(steps))
 
-##ggplot(interval, aes(x=interval, y=steps)) +
-  geom_line(color = "firebrick")
+ggplot(interval, aes(x=interval, y=steps)) +   geom_line(color = "firebrick")
   
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
