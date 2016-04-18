@@ -90,10 +90,14 @@ Show any code that is needed to
 
 1.Calculate the total number of steps taken per day
 
-##steps <- data %>%; 
-  ##filter(!is.na(steps)) %>%; 
+##steps <- data %>% 
+
+  filter(!is.na(steps)) %>%; 
+  
   ##group_by(date) %>%; 
-  ##summarize(steps = sum(steps)) %>%; 
+  
+  ##summarize(steps = sum(steps)) %>%;
+  
   ##print' 
 
 For this part of the assignment, you can ignore the missing values in
