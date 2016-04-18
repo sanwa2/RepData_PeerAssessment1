@@ -168,7 +168,7 @@ med_diff <- rmedian.i - rmedian
 
 total_diff <- sum(steps_by_day_i$steps) - sum(steps_by_day$steps)
 ```
-  ![plot of Missing values](./doc/Missing values.png)
+  ![plot of activity](./doc/activity.png)
 
 mean_steps_full <- mean(steps_full$steps, na.rm = TRUE)
 
