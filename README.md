@@ -109,6 +109,8 @@ the dataset.
 ggplot(steps, aes(x = steps)) +
   geom_histogram(fill = "firebrick", binwidth = 1000) +
   labs(title = "Histogram of Steps per day", x = "Steps per day", y = "Frequency")
+  
+  ![plot of hist per day](./hist per day.png)
 
 
 3. Calculate and report the **mean** and **median** total number of steps taken per day
@@ -133,6 +135,8 @@ interval <- data %>%
   summarize(steps = mean(steps))
 
 ggplot(interval, aes(x=interval, y=steps)) +   geom_line(color = "firebrick")
+
+![plot of Rplot0](./Rplot0.png)
   
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -185,6 +189,8 @@ steps_full <- data_full %>%
 ggplot(steps_full, aes(x = steps)) +
   geom_histogram(fill = "firebrick", binwidth = 1000) +
   labs(title = "Histogram of Steps per day, including missing values", x = "Steps per day", y = "Frequency")
+  
+  ![plot of Missing values](./Missing values.png)
 
 mean_steps_full <- mean(steps_full$steps, na.rm = TRUE)
 
